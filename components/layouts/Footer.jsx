@@ -16,10 +16,6 @@ export default function Footer () {
           <div>
             © {new Date().getFullYear()} {siteConfig.shortName}
           </div>
-          <div className='text-[9px]'>
-            Dibangun dengan Next.js & Tailwind. Static landing, mudah
-            dikembangkan.
-          </div>
         </div>
       </Container>
     </footer>

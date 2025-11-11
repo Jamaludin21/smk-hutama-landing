@@ -1,5 +1,5 @@
 import Container from '@/components/ui/container'
-import { downloads } from '@/constant/downloads'
+import { downloads } from '@/constant/download'
 
 export const metadata = {
   title: 'Download',

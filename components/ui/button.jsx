@@ -1,31 +1,35 @@
+'use client'
+
 import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
 import { cva } from 'class-variance-authority'
+import { Loader2 } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
-import { cn } from '@/lib//utils'
-import { Loader2Icon } from 'lucide-react'
-
-const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-300 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+export const buttonVariants = cva(
+  [
+    'inline-flex items-center justify-center gap-2',
+    'whitespace-nowrap rounded-md text-sm font-medium',
+    'transition-colors duration-200',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+    'disabled:pointer-events-none disabled:opacity-50',
+    '[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0'
+  ].join(' '),
   {
     variants: {
       variant: {
-        default:
-          'bg-blue-500 text-white shadow-md hover:bg-blue-600 hover:shadow-lg active:scale-[0.97]',
-        destructive:
-          'bg-red-500 text-white shadow-sm hover:bg-red-600 hover:shadow-md active:scale-[0.97]',
+        default: 'bg-blue-600 text-white shadow-sm hover:bg-blue-700',
+        destructive: 'bg-red-500 text-white shadow-sm hover:bg-red-600',
         outline:
-          'border border-input bg-background hover:bg-gray-100 hover:text-accent-foreground hover:shadow-sm active:scale-[0.97]',
-        secondary:
-          'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 hover:shadow-md active:scale-[0.97]',
-        ghost:
-          'hover:bg-gray-100 hover:text-black transition-colors active:scale-[0.97]',
-        link: 'text-primary underline-offset-4 hover:underline hover:text-blue-600 active:scale-[0.97]'
+          'border border-slate-300 bg-white text-slate-900 hover:bg-slate-50',
+        secondary: 'bg-slate-100 text-slate-900 hover:bg-slate-200',
+        ghost: 'bg-transparent text-slate-900 hover:bg-slate-100',
+        link: 'text-blue-600 underline-offset-4 hover:underline'
       },
       size: {
-        default: 'h-9 px-4 py-2',
-        sm: 'h-8 rounded-md px-3 text-xs',
-        lg: 'h-10 rounded-md px-8',
+        default: 'h-9 px-4',
+        sm: 'h-8 px-3 text-xs',
+        lg: 'h-10 px-6 text-sm',
         icon: 'h-9 w-9'
       }
     },
@@ -37,26 +41,43 @@ const buttonVariants = cva(
 )
 
 const Button = React.forwardRef(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      isLoading = false,
+      children,
+      ...props
+    },
+    ref
+  ) => {
     const Comp = asChild ? Slot : 'button'
+
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
+        className={cn(buttonVariants({ variant, size, className }))}
+        disabled={isLoading || props.disabled}
         {...props}
-      />
+      >
+        {isLoading && <Loader2 className='animate-spin' />}
+        {children}
+      </Comp>
     )
   }
 )
+
 Button.displayName = 'Button'
 
-function ButtonLoading () {
+export function ButtonLoading ({ label = 'Harap tunggu...' }) {
   return (
     <Button disabled>
-      <Loader2Icon className='animate-spin' />
-      Please wait
+      <Loader2 className='animate-spin' />
+      {label}
     </Button>
   )
 }
 
-export { Button, buttonVariants, ButtonLoading }
+export { Button }
