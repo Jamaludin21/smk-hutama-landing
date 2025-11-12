@@ -61,9 +61,15 @@ export default function Navbar () {
                   <span className='text-xs'>▾</span>
                 </button>
                 <div
-                  className='invisible opacity-0 group-hover:visible group-hover:opacity-100
-                    absolute left-0 mt-2 min-w-[220px] rounded-xl border border-slate-200 bg-white shadow-lg
-                    transition'
+                  className={`
+      absolute left-0 top-full
+      mt-1
+      min-w-[220px] rounded-xl border border-slate-200 bg-white shadow-lg
+      opacity-0 invisible translate-y-1
+      group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+      transition-all duration-150
+      z-30
+    `}
                 >
                   {item.children.map(child => (
                     <Link

@@ -3,6 +3,7 @@ import HomeStats from "@/components/sections/HomeStats";
 import HomeMajorsPreview from "@/components/sections/HomeMajorsPreview";
 import HomeNewsPreview from "@/components/sections/HomeNewsPreview";
 import React from "react";
+import PageTransition from "@/components/common/PageTransition";
 
 export const metadata = {
   title: "Beranda",
@@ -12,11 +13,11 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <React.Fragment>
+    <PageTransition>
       <HomeHero />
       <HomeStats />
       <HomeMajorsPreview />
       <HomeNewsPreview />
-    </React.Fragment>
+    </PageTransition>
   );
 }

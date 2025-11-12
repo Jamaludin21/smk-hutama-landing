@@ -13,7 +13,7 @@ export const heroContent = {
     href: "/informasi/jurusan",
   },
   image: {
-    src: "/hero/kelas-siswa.jpg",
+    src: "https://a1epuokipdvggoec.public.blob.vercel-storage.com/galler3-o5kwiisYRp4uvnXsCgLwwPTh33ciMD.jpg",
     alt: "Kegiatan belajar dan praktik siswa SMK Hutama",
   },
 };

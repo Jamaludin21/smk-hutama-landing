@@ -1,4 +1,6 @@
+import PageTransition from '@/components/common/PageTransition'
 import Container from '@/components/ui/container'
+import { RevealContainer, RevealItem } from '@/components/common/Reveal'
 
 export const metadata = {
   title: 'Sambutan Kepala Sekolah',
@@ -8,14 +10,23 @@ export const metadata = {
 
 export default function SambutanPage () {
   return (
-    <Container className='py-10'>
-      <h1 className='text-2xl font-semibold text-slate-900'>
-        Sambutan Kepala Sekolah
-      </h1>
-      <p className='mt-4 text-sm text-slate-700 leading-relaxed'>
-        {/* Isi sambutan resmi di sini */}
-        Assalamu&apos;alaikum warahmatullahi wabarakatuh...
-      </p>
-    </Container>
+    <PageTransition>
+      <Container className='py-10'>
+        <RevealContainer>
+          <RevealItem>
+            <h1 className='text-2xl font-semibold text-slate-900'>
+              Sambutan Kepala Sekolah
+            </h1>
+          </RevealItem>
+
+          <RevealItem>
+            <p className='mt-4 text-sm text-slate-700 leading-relaxed'>
+              {/* Isi sambutan resmi di sini */}
+              Assalamu&apos;alaikum warahmatullahi wabarakatuh...
+            </p>
+          </RevealItem>
+        </RevealContainer>
+      </Container>
+    </PageTransition>
   )
 }

@@ -40,34 +40,46 @@ export const buttonVariants = cva(
   }
 )
 
-const Button = React.forwardRef(
-  (
-    {
-      className,
-      variant,
-      size,
-      asChild = false,
-      isLoading = false,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const Comp = asChild ? Slot : 'button'
-
+const Button = React.forwardRef(function Button (
+  {
+    className,
+    variant,
+    size,
+    asChild = false,
+    isLoading = false,
+    children,
+    ...props
+  },
+  ref
+) {
+  // asChild: HARUS persis satu elemen, tidak boleh ada sibling (termasuk spinner)
+  if (asChild) {
+    // hindari passing prop yang tidak valid ke <a>/<Link>
+    const { disabled, type, ...rest } = props
     return (
-      <Comp
+      <Slot
         ref={ref}
         className={cn(buttonVariants({ variant, size, className }))}
-        disabled={isLoading || props.disabled}
-        {...props}
+        {...rest}
       >
-        {isLoading && <Loader2 className='animate-spin' />}
         {children}
-      </Comp>
+      </Slot>
     )
   }
-)
+
+  // mode tombol biasa
+  return (
+    <button
+      ref={ref}
+      className={cn(buttonVariants({ variant, size, className }))}
+      disabled={isLoading || props.disabled}
+      {...props}
+    >
+      {isLoading && <Loader2 className='animate-spin' />}
+      {children}
+    </button>
+  )
+})
 
 Button.displayName = 'Button'
 

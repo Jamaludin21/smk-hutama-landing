@@ -1,15 +1,12 @@
 // Animation variants for consistent animations
 export const fadeInUp = {
-  hidden: {
-    opacity: 0,
-    y: 60,
-  },
+  hidden: { opacity: 0, y: 32 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: [0.25, 0.25, 0, 1], // Custom cubic-bezier for smooth motion
+      duration: 0.35,
+      ease: [0.25, 0.25, 0, 1],
     },
   },
 };
@@ -49,18 +46,26 @@ export const staggerContainer = {
   },
 };
 
-export const imageVariants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.8,
-    y: 20,
+export const fadeInSoft = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.25,
+      ease: "easeOut",
+    },
   },
+};
+
+export const imageReveal = {
+  hidden: { opacity: 0, scale: 0.96, y: 10 },
   visible: {
     opacity: 1,
     scale: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.4,
       ease: [0.25, 0.25, 0, 1],
     },
   },
@@ -89,13 +94,13 @@ export const containerVariants = {
 };
 
 export const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 18 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      ease: [0.25, 0.25, 0, 1],
-      duration: 0.5,
+      duration: 0.3,
+      ease: "easeOut",
     },
   },
 };
