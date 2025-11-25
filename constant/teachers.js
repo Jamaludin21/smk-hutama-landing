@@ -2,7 +2,8 @@ export const leaders = [
   {
     name: "Dra. Sufida Ambarwati",
     role: "Kepala Sekolah",
-    photo: "/guru/sufida-ambarwati.jpg",
+    photo:
+      "https://a1epuokipdvggoec.public.blob.vercel-storage.com/WhatsApp%20Image%202025-11-11%20at%2014.16.39-xQC0pZwTNL3KMlCzsYxNArcUrAMxkZ.jpeg",
   },
   {
     name: "Dewi Ramdani",

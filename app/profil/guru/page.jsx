@@ -7,6 +7,7 @@ import {
   RevealItem,
   RevealCard
 } from '@/components/common/Reveal'
+import YouTubeEmbed from '@/components/common/YoutubeEmbed'
 
 export const metadata = {
   title: 'Guru & Tendik',
@@ -53,14 +54,26 @@ export default function GuruPage () {
             ))}
           </div>
 
+          {/* Video Profil Guru */}
+          <RevealItem>
+            <h2 className='my-4 text-sm font-semibold text-slate-900'>
+              Video Profil Guru
+            </h2>
+          </RevealItem>
+          <RevealItem>
+            <YouTubeEmbed
+              urlOrId='https://youtu.be/MSR3bqmdgg8'
+              title='Profil Guru SMK Hutama'
+            />
+          </RevealItem>
+
           {teachers.length > 0 && (
             <>
               <RevealItem>
                 <h2 className='mt-8 text-sm font-semibold text-slate-900'>
-                  Guru &amp; Tendik
+                  Daftar Guru &amp; Tendik
                 </h2>
               </RevealItem>
-
               <div className='mt-3 grid gap-3 md:grid-cols-4'>
                 {teachers.map(t => (
                   <RevealCard
