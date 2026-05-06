@@ -25,15 +25,22 @@ export default function HomeNewsPreview () {
             {items.map(item => (
               <RevealCard
                 key={item.slug}
-                className='rounded-2xl border border-slate-100 bg-slate-50 p-4'
+                className='rounded-2xl border border-slate-100 bg-slate-50 p-4 transition-colors hover:bg-slate-100 group'
               >
-                <div className='text-[10px] text-slate-500'>{item.date}</div>
-                <h3 className='text-sm font-semibold text-slate-900 line-clamp-2'>
-                  {item.title}
-                </h3>
-                <p className='text-[10px] text-slate-600 line-clamp-3'>
-                  {item.excerpt}
-                </p>
+                <Link
+                  href={`/berita/${item.slug}`}
+                  className='flex flex-col gap-1.5 h-full'
+                >
+                  <time className='text-[10px] text-slate-500 block mb-1'>
+                    {item.date}
+                  </time>
+                  <h3 className='text-sm font-semibold text-slate-900 line-clamp-2 transition-colors group-hover:text-blue-700'>
+                    {item.title}
+                  </h3>
+                  <p className='text-[10px] text-slate-600 line-clamp-3 mt-1'>
+                    {item.excerpt}
+                  </p>
+                </Link>
               </RevealCard>
             ))}
           </div>

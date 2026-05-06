@@ -36,12 +36,12 @@ export default function HomeMajorsPreview () {
                 key={m.slug}
                 className='rounded-2xl border border-slate-100 bg-white p-4 flex flex-col gap-2'
               >
-                <div className='text-sm font-semibold text-slate-900'>
+                <h3 className='text-sm font-semibold text-slate-900'>
                   {m.name}
-                </div>
-                <div className='text-[11px] text-slate-600'>
+                </h3>
+                <p className='text-[11px] text-slate-600'>
                   {m.shortDescription}
-                </div>
+                </p>
               </RevealCard>
             ))}
           </div>
